@@ -20,7 +20,7 @@ def read_image(img_id, data_path):
     paths = [
             os.path.join(data_path, img_name.format(img_id)) for img_name in IMAGE_NAMES
             ]
-    assert all(os.isfile(paths))
+    assert all(os.path.isfile(path) for path in paths)
 
     imgs = [np.array(PIL.Image.open(path)) for path in paths]
     return np.stack(imgs, axis=-1)
